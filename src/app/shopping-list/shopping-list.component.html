@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-5">
+    <div>
+      <h2 style="text-align: center; margin-bottom: 13px;">
+        <strong>{{authService.userElem | user}}'s Shopping List</strong>
+      </h2>
+      <p style="text-align: center" *ngIf="ingredients.length == 0">
+        Your shopping list is currently empty.
+      </p>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of ingredients; let i = index" (click)="onClickIngredient(i)"
+        style="cursor: pointer; height: 44px;">
+        <div class="pull-left" style="width: 50%;">
+          <span class="text">
+            {{ ingredient.amount }} {{ ingredient.name }}
+          </span>
+        </div>
+        <div class="pull-right" style="width: 50%;">
+          <button mat-icon-button color="warn" (click)="onDelete(i)" style="float: right">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button [routerLink]="[i, 'edit']" (click)="addOrEditIngredient()"
+            style="float: right;">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <img style="float: right;     padding-top: 5px;
+          margin-right: 7px;" src="/assets/img/newItem.png" *ngIf="shoppingListService.newItems.has(ingredient.name)">
+        </div>
+      </li>
+    </ul>
+    <div style="text-align: center;">
+      <app-add-button [routerLink]="['new']" (click)="addOrEditIngredient()"></app-add-button>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <img *ngIf="this.ingredients.length==0"
+      src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Empty_supermarket_shelves_before_Hurricane_Sandy%2C_Montgomery%2C_NY.jpg"
+      style="opacity: 0.4; width: 100%;">
+    <img *ngIf="this.ingredients.length>0"
+      src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/stock%2Fshutterstock_373602469"
+      style="opacity: 0.4; width: 100%;">
+  </div>
+</div>

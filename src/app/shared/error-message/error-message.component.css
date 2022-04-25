@@ -1,0 +1,5 @@
+.error{
+    color: red;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+}

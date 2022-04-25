@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    background: url(https://hasdey-enosh.co.il/wp-content/uploads/2013/06/ivory-off-white-paper-texture.jpg);
+    background-size: cover;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+img{
+    border-radius: 10px;
+}

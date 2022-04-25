@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2 style="text-align: center;">
+        <strong>{{message}}</strong>
+      </h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Recipe Picture (Optional)</label>
+            <textarea type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath
+              placeholder="Paste here an url of an image from google!&#x0a;Pick a picture from google -> right click on it -> copy img address."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="imagePath.value">
+        <div class="col-xs-12">
+          <img onError="this.src = 'https://s3.amazonaws.com/images.seroundtable.com/invalid-url-1354629517.png'"
+            [src]="imagePath.value" class="img-responsive" style="width:25%; height:50%" />
+        </div>
+        <br />
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" formControlName="description" class="form-control" rows="2">
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <label for="ingredientGroup">Ingredients</label>
+          <p *ngIf="controls.length == 0">
+            There are no ingredients in this recipe.
+          </p>
+          <div *ngFor="let ingredient of controls; let i = index" [formGroupName]="i" id="ingredientGroup"
+            style="margin-top: 1px">
+            <div style="display: flex; flex-wrap: wrap;">
+              <input id="name" type="text" class="form-control" formControlName="name"
+                style="flex: 5;" placeholder="Ingredient {{ i + 1 }}" />
+              <input style="margin-left: 20px; flex: 3.5;" id="amount" type="text" class="form-control" formControlName="amount"
+                placeholder="Amount" (keydown.Tab)="i == controls.length-1? onAddIngredient(): null" />
+              <button style="margin-left: 20px; flex: 0.5;" mat-icon-button color="warn" (click)="onDeleteIngredient(i)"
+                tabindex="-1">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <button mat-icon-button (click)="onAddIngredient()" type="button">
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-xs-12">
+          <span class="alert alert-danger" *ngIf="isIngredientInvalid()">
+            Amount of an ingredient should be a number.
+          </span>
+          <br *ngIf="isIngredientInvalid() && isNameInvalid()">
+          <br *ngIf="isIngredientInvalid() && isNameInvalid()">
+          <span class="alert alert-danger" *ngIf="isNameInvalid()">
+            Please enter a name to the recipe.
+          </span>
+        </div>
+        <div class="col-xs-12" style="text-align: center;">
+          <button type="submit" class="btn btn-success" [disabled]="form.invalid">
+            Save
+          </button>
+          <button type="button" class="btn btn-danger" routerLink="../" style="margin: 10px">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

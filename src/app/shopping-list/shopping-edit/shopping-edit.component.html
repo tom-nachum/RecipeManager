@@ -1,0 +1,25 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <h2>{{ message }}</h2>
+  <button mat-icon-button color="warn" (click)="onClear()" style="float: right">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<hr style="margin-top: 5px; margin-bottom: 15px;" />
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="slForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-7 form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" formControlName="name" />
+          <label for="amount">Amount</label>
+          <input type="text" id="amount" class="form-control" formControlName="amount" />
+          <button class="btn btn-success" type="submit" style="width: 100%; font-size: large;"
+            [disabled]="slForm.invalid">
+            {{ editMode ? "Save" : "Add" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

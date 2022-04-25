@@ -1,0 +1,25 @@
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover
+}
+
+::ng-deep.mat-dialog-container {
+  padding: 10px !important;
+}
+
+.list-group-item {
+  padding: 2px 13px;
+  background-color: transparent;
+  border: 0px solid #ddd;
+}
+
+button.mat-focus-indicator.mat-icon-button.mat-button-base:hover {
+  background-color: gainsboro;
+}
+
+::ng-deep .mat-tooltip {
+  max-width: unset !important;
+  white-space: pre-wrap;
+  font-size: 14px;
+}

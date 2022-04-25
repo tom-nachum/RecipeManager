@@ -1,0 +1,40 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+img {
+  width: 450px;
+  height: 250px;
+}
+
+.alert {
+  padding: 4px;
+}
+
+.mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
+  color: red;
+}
+
+.mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  color: black;
+  margin-bottom: 9px;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.row {
+  border-style: dotted;
+  border-left-color: rgb(231, 226, 226);
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent
+}
+
+.mat-icon-button {
+  width: 0px;
+  height: 0px;
+}

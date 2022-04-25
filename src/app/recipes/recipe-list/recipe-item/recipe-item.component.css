@@ -1,0 +1,30 @@
+a.list-group-item .list-group-item-heading, button.list-group-item .list-group-item-heading {
+  font-weight: 500;
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: #222;
+  border: 2.5px solid lightgreen;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+  max-width: 100%;
+  height: 71px;
+  float: right;
+}

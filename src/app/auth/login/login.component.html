@@ -1,0 +1,27 @@
+<div class="imgContainer">
+  <img src="https://www.pngjoy.com/pngl/366/6796335_chef-cooking-clipart-transparent-png.png" class="chefImg" />
+  <div class="formDisplay">
+    <app-loading-spinner class="loadingSpinner" *ngIf="isLoading"></app-loading-spinner>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="form-group">
+        <input type="email" id="email" class="form-control" ngModel name="email" email required placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" class="form-control" ngModel name="password" minlength="6" required
+          placeholder="Password" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid"
+          style="height: 40px; width: 250px; font-size: larger">
+          Login
+        </button>
+      </div>
+      <p style="text-align: center">
+        Don't have an account?
+        <button class="signUp" (click)="moveToSignUp()" type="button">
+          Sign up
+        </button>
+      </p>
+    </form>
+  </div>
+</div>

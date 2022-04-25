@@ -1,0 +1,20 @@
+
+.signupForm {
+  border: 1px solid lightgray;
+  padding: 30px;
+}
+
+.chefLogo{
+    height: 50px;
+    width: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 10px;
+    position: relative;
+}
+
+.LoginSwitch{
+  border: 1px solid lightgray;
+  padding: 20px;
+}

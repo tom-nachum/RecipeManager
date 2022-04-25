@@ -1,0 +1,41 @@
+button.mat-focus-indicator.mat-icon-button.mat-button-base:hover {
+    background: rgb(255, 181, 181);
+}
+
+.list-group-item:hover{
+    background: rgb(235, 235, 235);
+}
+
+.list-group-item{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 0px;
+}
+
+.row{
+    padding-bottom: 15px
+}
+
+.list-group{
+    max-height: 60vh;
+    overflow:auto;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+img{
+    width: 30px;
+}

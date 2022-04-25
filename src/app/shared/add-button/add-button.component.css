@@ -1,0 +1,31 @@
+.btn {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    font-size: x-large;
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+    background-color: beige;
+    cursor: pointer;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+    background-color: lightgreen;
+    color: #222;
+    border: 0.1px solid rgb(199, 199, 199);
+  }
+  
+  button.mat-focus-indicator.mat-mini-fab.mat-button-base.mat-primary:hover {
+    height: 44px;
+    width: 44px;
+  }
+
+  button.mat-focus-indicator.mat-mini-fab.mat-button-base.mat-primary {
+    margin-bottom: 20px;
+}

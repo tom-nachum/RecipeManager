@@ -1,0 +1,17 @@
+.navbar-inverse .navbar-nav>li>a:hover{
+    color: lightgreen;
+}
+
+.navbar-default {
+    background-color: transparent;
+}
+
+p{
+    float: right;
+    font-size: 17px;
+    padding-left: 7px;
+}
+
+.material-icons{
+    font-size: 14px;
+}

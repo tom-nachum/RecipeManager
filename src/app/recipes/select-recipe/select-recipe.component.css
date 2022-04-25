@@ -1,0 +1,42 @@
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.descContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.description {
+    position: absolute;
+    text-align: center;
+    width: 58%;
+    top: 3.5%;
+}
+
+img {
+    opacity: 0.3;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    color: black;
+    font-weight: bold;
+}
+
+.sub-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: black;
+    font-weight: bold;
+}
+
+  
