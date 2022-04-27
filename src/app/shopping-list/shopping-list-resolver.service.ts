@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/r
 import { Ingredient } from '../shared/ingredient.model';
 
 @Injectable({ providedIn: 'root' })
-export class ShoppingListResolverService implements Resolve<Ingredient[]>{
+export class ShoppingListResolverService implements Resolve<Ingredient[] | null>{
     constructor(private dataStorageService: DataStorageService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

@@ -6,7 +6,19 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 
+const TIME_OUT = 15
+const CHECK_EVERY = 1
+const MIN_2_SEC = 60
 const SEC_2_MILISEC = 1000
+//from fire base API page
+const SIGN_UP_END_POINT =
+  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
+
+const SIGN_IN_END_POINT =
+  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
+
+//from fireBase->ProjectOverview->ProjectSettings->Web API key
+const APP_KEY = 'AIzaSyDBnYLm-FqiLWt1igSaTVVVd4uC4e8f2Qo';
 
 //from fire base API page
 export interface AuthResopnseData {
@@ -18,23 +30,30 @@ export interface AuthResopnseData {
   registered?: boolean;
 }
 
-//from fire base API page
-const SIGN_UP_END_POINT =
-  'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=';
-
-const SIGN_IN_END_POINT =
-  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
-
-//from fireBase->ProjectOverview->ProjectSettings->Web API key
-const APP_KEY = 'AIzaSyDBnYLm-FqiLWt1igSaTVVVd4uC4e8f2Qo';
-
 @Injectable({ providedIn: 'root' })
-export class AuthService{
-  user = new BehaviorSubject<User|null>(null);
-  userElem:User;
+export class AuthService {
+  user = new BehaviorSubject<User | null>(null);
+  userElem: User;
   private tokenExpirationTimer: any;
+  private lastActivity = Date.now()
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { 
+    this.initListener()
+  }
+
+  initListener() {
+    document.body.addEventListener('click', () => this.updateLastActivity());
+    document.body.addEventListener('mouseover', () => this.updateLastActivity());
+    document.body.addEventListener('mouseout', () => this.updateLastActivity());
+    document.body.addEventListener('keydown', () => this.updateLastActivity());
+    document.body.addEventListener('keyup', () => this.updateLastActivity());
+    document.body.addEventListener('keypress', () => this.updateLastActivity());
+  }
+
+  updateLastActivity(){
+    this.lastActivity = Date.now(); 
+  }
+
 
   signUp(email: string, password: string) {
     return this.http
@@ -81,7 +100,6 @@ export class AuthService{
     this.user.next(null);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
-    localStorage.removeItem('newSLItems')
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -90,14 +108,17 @@ export class AuthService{
 
   //expirationDuration in miliseconds!
   autoLogout(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
+    this.tokenExpirationTimer = setInterval(() => {
+      const sinceLastActivity = Date.now() - this.lastActivity
+      if (sinceLastActivity > TIME_OUT*MIN_2_SEC*SEC_2_MILISEC){
+        this.logout();
+      }
+    }, CHECK_EVERY*MIN_2_SEC*SEC_2_MILISEC);
   }
 
   autoLogin() {
     const data = localStorage.getItem('userData')
-    if (!data){
+    if (!data) {
       return;
     }
     const userData: {
@@ -121,12 +142,16 @@ export class AuthService{
     }
   }
 
-  getUserName(){
+  getUserName() {
     const email = this.userElem.email;
     const emailName = email.split('@')[0];
     const name = emailName.split(/[._]/)[0]
     const upperCased = name.charAt(0).toUpperCase() + name.slice(1);
-    return upperCased+" ,id: "+this.userElem.id
+    return upperCased
+  }
+
+  getUserTitle(){
+    return this.getUserName() + " ,id: " + this.userElem.id
   }
 
   private handleAuthentication(email: string, localId: string, idToken: string, expiresIn: number) {

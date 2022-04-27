@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   title = "Recipe Manager"
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     public slService: ShoppingListService,
   ) {
   }

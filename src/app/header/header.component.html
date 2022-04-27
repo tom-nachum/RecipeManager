@@ -19,12 +19,6 @@
             Recipes
           </a>
         </li>
-        <li routerLinkActive="active" *ngIf="!isAuthenticated">
-          <a routerLink="/auth">
-            <span class="material-icons">login</span>
-            Authenticate
-          </a>
-        </li>
         <li routerLinkActive="active" *ngIf="isAuthenticated">
           <a routerLink="/shopping-list">
             <div>
@@ -37,6 +31,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active" routerLink="/auth" *ngIf="!isAuthenticated">
+          <a style="cursor: pointer">
+            <span class="material-icons"> login </span>
+            Sign in 
+          </a>
+        </li>
         <li *ngIf="isAuthenticated">
           <a style="cursor: pointer" (click)="onLogout()">
             <span class="material-icons"> logout </span>
