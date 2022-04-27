@@ -5,21 +5,19 @@
   </button>
 </div>
 <hr style="margin-top: 5px; margin-bottom: 15px;" />
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="slForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-sm-7 form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" formControlName="name" />
-          <label for="amount">Amount</label>
-          <input type="text" id="amount" class="form-control" formControlName="amount" />
-          <button class="btn btn-success" type="submit" style="width: 100%; font-size: large;"
-            [disabled]="slForm.invalid">
-            {{ editMode ? "Save" : "Add" }}
-          </button>
-        </div>
+<div>
+  <form [formGroup]="slForm" (ngSubmit)="onSubmit()">
+    <div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" />
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" class="form-control" formControlName="amount" />
+        <button class="btn btn-success" type="submit" style="width: 100%; font-size: large;"
+          [disabled]="slForm.invalid">
+          {{ editMode ? "Save" : "Add" }}
+        </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

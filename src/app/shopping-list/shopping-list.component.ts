@@ -41,7 +41,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '430px';
+    dialogConfig.width = '450px';
     dialogConfig.height = '322px';  
     this.dialog.open(ShoppingEditComponent, dialogConfig);
   }
