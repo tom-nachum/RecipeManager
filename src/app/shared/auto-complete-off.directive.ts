@@ -20,7 +20,8 @@ export class AutoCompleteOffDirective implements OnInit {
     );
   }
 
-  @HostListener('click') onFocus(eventData: Event) {
+  @HostListener('click') @HostListener('touchend') onFocus(eventData: Event) {
     this.renderer.removeAttribute(this.elementRef.nativeElement, 'readonly');
   }
+  
 }

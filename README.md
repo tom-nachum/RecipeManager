@@ -1,6 +1,6 @@
 # <img src="src/recipe%20manager%20icon.png" width=40> Recipe Manager
 
-Link:
+Link: https://tom-recipe-manager.web.app/
 
 ## Description
 Ever forgot to buy some ingredient for a delicious recipe you wanted to made? Well not any more! 
