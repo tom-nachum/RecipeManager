@@ -7,7 +7,7 @@
 <div class="row" style="margin-top: 5px;">
   <div class="col-xs-12">
     <div style="text-align: center;">
-      <h1 style="margin-top: 4px; float: left;">{{ recipe.name }}</h1>
+      <h1 style="margin-top: 4px; float: left; overflow: auto; width: 80%;">{{ recipe.name }}</h1>
       <button mat-icon-button color="warn" (click)="onDelete()" style="float: right;"
         matTooltip="Delete {{recipe.name}}">
         <mat-icon>delete</mat-icon>
@@ -30,7 +30,8 @@
     <br />
     <ul class="list-group">
       <label for="ingredients">Ingredients</label>
-      <li id="ingredients" class="list-group-item" *ngFor="let ingredient of recipe.ingredients" style="overflow: auto;">
+      <li id="ingredients" class="list-group-item" *ngFor="let ingredient of recipe.ingredients"
+        style="overflow: auto;">
         <mat-icon style="  font-size: 11px;  width: 15px;">chevron_right</mat-icon>
         {{ ingredient.amount }} {{ ingredient.name }}
       </li>

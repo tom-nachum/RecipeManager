@@ -1,28 +1,33 @@
 import { DataStorageService } from './../../shared/data-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { Ingredient } from '../../shared/ingredient.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css'],
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, AfterContentChecked, AfterViewInit, OnDestroy {
   recipeId: number;
   recipe: Recipe | null;
   editMode = false;
   form: FormGroup;
   message: string;
 
+  @ViewChildren('nameInput') nameInput: QueryList<any>
+  private sub: Subscription = new Subscription()
+
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
     private router: Router,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private cdref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +45,23 @@ export class RecipeEditComponent implements OnInit {
       }
       this.initForm();
     });
+
+  }
+
+  ngAfterViewInit() {
+    this.sub = this.nameInput.changes.subscribe(resp => {
+      if (this.nameInput.length >= 1) {
+        this.nameInput.last.nativeElement.focus();
+      }
+    })
+  }
+
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
   }
 
   private initForm(): void {
@@ -56,7 +78,7 @@ export class RecipeEditComponent implements OnInit {
           recipeIngredients.push(
             new FormGroup({
               name: new FormControl(ingredient.name),
-              amount: new FormControl(ingredient.amount, [Validators.pattern("^[0-9,.]*$")]),
+              amount: new FormControl(ingredient.amount, [Validators.pattern("^[0-9.]*$")]),
             })
           );
         }
@@ -108,7 +130,7 @@ export class RecipeEditComponent implements OnInit {
     (this.form.get('ingredients') as FormArray).push(
       new FormGroup({
         name: new FormControl(null),
-        amount: new FormControl(null, [Validators.pattern("^[0-9,.]*$")]),
+        amount: new FormControl(null, [Validators.pattern("^[0-9.]*$")]),
       })
     );
   }
@@ -136,5 +158,24 @@ export class RecipeEditComponent implements OnInit {
     return nameControl != null && nameControl.invalid && nameControl.touched
   }
 
+  onEnter(event, i, id) {
+    event.preventDefault()
+    if (id == "amount" && i == this.controls.length - 1) {
+      this.onAddIngredient()
+      return
+    }
+    let element = event.srcElement.nextElementSibling; // get the sibling element
+    if (element == null) {
+      return;
+    }
+    if (element.tagName == 'BUTTON') {
+      var form = event.target.closest('form')
+      form.elements[4 + 3 * i + 2].focus();
+      return
+    }
+    else
+      element.focus();
+    return false
+  }
 
 }

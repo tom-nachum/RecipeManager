@@ -13,7 +13,9 @@
         style="cursor: pointer; height: 44px;">
         <div class="pull-left" style="width: 50%;">
           <span class="text">
-            {{ ingredient.amount }} {{ ingredient.name }}
+            {{ ingredient.amount.toString().length>6 ? 
+              (ingredient.amount.toString() | slice:0:6)+'..' : 
+              ingredient.amount.toString() }} {{ ingredient.name }}
           </span>
         </div>
         <div class="pull-right" style="width: 50%;">

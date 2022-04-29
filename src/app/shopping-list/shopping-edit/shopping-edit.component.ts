@@ -24,7 +24,8 @@ export class ShoppingEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dialogRef: MatDialogRef<ShoppingEditComponent>,
-    private dateService: DataStorageService
+    private dateService: DataStorageService,
+
   ) {}
 
   ngOnInit() {
@@ -56,7 +57,7 @@ export class ShoppingEditComponent implements OnInit {
   initForm() {
     this.slForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
-      amount: new FormControl(null, [Validators.required, Validators.pattern("^[0-9,.]*$")]),
+      amount: new FormControl(null, [Validators.required, Validators.pattern("^[0-9.]*$")]),
     });
   }
 
@@ -82,5 +83,19 @@ export class ShoppingEditComponent implements OnInit {
     this.slForm.reset();
     this.router.navigate(['./shopping-list']);
     this.dialogRef.close();
+  }
+
+  onEnter(event){
+    event.preventDefault()
+    let element = event.srcElement.nextElementSibling; // get the sibling element
+    if(element == null){
+      return;
+    }
+    if (element.tagName=='BUTTON'){
+      return
+    }
+    else
+        element.focus();
+    return false
   }
 }

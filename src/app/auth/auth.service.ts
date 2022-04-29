@@ -42,6 +42,7 @@ export class AuthService {
   }
 
   initListener() {
+    document.body.addEventListener('touchend', () => this.updateLastActivity());
     document.body.addEventListener('click', () => this.updateLastActivity());
     document.body.addEventListener('mouseover', () => this.updateLastActivity());
     document.body.addEventListener('mouseout', () => this.updateLastActivity());

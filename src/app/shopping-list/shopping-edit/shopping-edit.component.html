@@ -6,13 +6,14 @@
 </div>
 <hr style="margin-top: 5px; margin-bottom: 15px;" />
 <div>
-  <form [formGroup]="slForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="slForm" (ngSubmit)="onSubmit()" appFocusFirstInput>
     <div>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" formControlName="name" />
+        <input #inputName type="text" id="name" class="form-control"
+        formControlName="name" (keydown.enter)="onEnter($event)"/>
         <label for="amount">Amount</label>
-        <input type="text" id="amount" class="form-control" formControlName="amount" />
+        <input type="text" id="amount" class="form-control" formControlName="amount"/>
         <button class="btn btn-success" type="submit" style="width: 100%; font-size: large;"
           [disabled]="slForm.invalid">
           {{ editMode ? "Save" : "Add" }}

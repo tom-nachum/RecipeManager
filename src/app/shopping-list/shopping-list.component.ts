@@ -39,8 +39,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   addOrEditIngredient() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false; // do not focus on exit button == first tapable element in the dialog.
     dialogConfig.width = '450px';
     dialogConfig.height = '322px';  
     this.dialog.open(ShoppingEditComponent, dialogConfig);

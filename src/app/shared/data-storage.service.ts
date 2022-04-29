@@ -65,7 +65,6 @@ export class DataStorageService {
           }),
         tap((ingredients) => {
           this.shoppingListService.setIngredients(ingredients)
-          console.log(ingredients)
         })
       )
   }
@@ -105,13 +104,11 @@ export class DataStorageService {
   }
 
   storeRecipes() {
-    console.log(this.recipeService.getRecipes())
     this.http
       //put method deletes all data in the DB and put the new data.
       .put<Recipe[]>(this.userDirectory() + '/recipes.json', this.recipeService.getRecipes())
       .subscribe((data) => {
         //
-        console.log(data)
       });
   }
 

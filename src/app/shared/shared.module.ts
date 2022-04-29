@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AutoCompleteOffDirective } from './auto-complete-off.directive';
 import { AddButtonComponent } from './add-button/add-button.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { FocusFirstInputDirective } from './focus-first-input.directive';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { SuccessDialogComponent } from './success-dialog/success-dialog.componen
         AutoCompleteOffDirective,
         AddButtonComponent,
         SuccessDialogComponent,
+        FocusFirstInputDirective,
     ],
     imports: [
         CommonModule,
@@ -41,7 +43,8 @@ import { SuccessDialogComponent } from './success-dialog/success-dialog.componen
         MatIconModule,
         AutoCompleteOffDirective,
         AddButtonComponent,
-        SuccessDialogComponent
+        SuccessDialogComponent,
+        FocusFirstInputDirective
     ]
 })
 export class SharedModule {}
