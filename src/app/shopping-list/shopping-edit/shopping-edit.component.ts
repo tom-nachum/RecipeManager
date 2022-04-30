@@ -6,6 +6,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
+const AMOUNT_PATTERN = /^(0*[1-9][0-9]*([\.\,][0-9]+)?|0+[\.\,][0-9]*[1-9][0-9]*)$/
+
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -57,7 +59,8 @@ export class ShoppingEditComponent implements OnInit {
   initForm() {
     this.slForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
-      amount: new FormControl(null, [Validators.required, Validators.pattern("^[0-9.]*$")]),
+      amount: new FormControl(null, [Validators.required, 
+        Validators.pattern(AMOUNT_PATTERN)]),
     });
   }
 

@@ -7,6 +7,8 @@ import { RecipeService } from '../recipe.service';
 import { Ingredient } from '../../shared/ingredient.model';
 import { Subscription } from 'rxjs';
 
+const AMOUNT_PATTERN = /^(0*[1-9][0-9]*([\.\,][0-9]+)?|0+[\.\,][0-9]*[1-9][0-9]*)$/
+
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
@@ -78,7 +80,7 @@ export class RecipeEditComponent implements OnInit, AfterContentChecked, AfterVi
           recipeIngredients.push(
             new FormGroup({
               name: new FormControl(ingredient.name),
-              amount: new FormControl(ingredient.amount, [Validators.pattern("^[0-9.]*$")]),
+              amount: new FormControl(ingredient.amount, [Validators.pattern(AMOUNT_PATTERN)]),
             })
           );
         }
@@ -130,7 +132,7 @@ export class RecipeEditComponent implements OnInit, AfterContentChecked, AfterVi
     (this.form.get('ingredients') as FormArray).push(
       new FormGroup({
         name: new FormControl(null),
-        amount: new FormControl(null, [Validators.pattern("^[0-9.]*$")]),
+        amount: new FormControl(null, [Validators.pattern(AMOUNT_PATTERN)]),
       })
     );
   }
