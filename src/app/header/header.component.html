@@ -5,7 +5,8 @@
         <span class="iconify" data-icon="mdi-chef-hat"></span>
         <p>{{title}}</p>
       </a>
-      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mydropdown">
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mydropdown"
+      >
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -14,13 +15,17 @@
     <div class="collapse navbar-collapse" id="mydropdown">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/recipes">
+          <a routerLink="/recipes"
+          data-toggle="collapse" data-target=".navbar-collapse.show"
+          >
             <span class="material-icons"> list </span>
             Recipes
           </a>
         </li>
         <li routerLinkActive="active" *ngIf="isAuthenticated">
-          <a routerLink="/shopping-list">
+          <a routerLink="/shopping-list"
+          data-toggle="collapse" data-target=".navbar-collapse.show"
+          >
             <div>
               <span class="material-icons"> shopping_cart
               </span>
@@ -32,13 +37,18 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li routerLinkActive="active" routerLink="/auth" *ngIf="!isAuthenticated">
-          <a style="cursor: pointer">
+          <a style="cursor: pointer"
+          data-toggle="collapse" data-target=".navbar-collapse.show"
+          >
             <span class="material-icons"> login </span>
             Sign in 
           </a>
         </li>
         <li *ngIf="isAuthenticated">
-          <a style="cursor: pointer" (click)="onLogout()">
+        <!-- to collapse when press on link: data-toggle="collapse" data-target=".navbar-collapse.show"-->
+          <a style="cursor: pointer" (click)="onLogout()"
+          data-toggle="collapse" data-target=".navbar-collapse.show" 
+          >
             <span class="material-icons"> logout </span>
             Logout
           </a>

@@ -3,22 +3,18 @@
   <div class="formDisplay">
     <app-loading-spinner class="loadingSpinner" *ngIf="isLoading"></app-loading-spinner>
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <input type="email" id="email" class="form-control" ngModel name="email" required placeholder="Email" email
+        (keydown.enter)="onEnter($event)" />
+      <input type="password" id="password" class="form-control" ngModel name="password" required placeholder="Password"
+        minlength="6" />
       <div class="form-group">
-        <input type="email" id="email" class="form-control" ngModel name="email" email required placeholder="Email" />
-      </div>
-      <div class="form-group">
-        <input type="password" id="password" class="form-control" ngModel name="password" minlength="6" required
-          placeholder="Password" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit" [disabled]="form.invalid"
-          style="height: 40px; width: 250px; font-size: larger">
+        <button class="btn btn-primary" type="submit" style="height: 40px; width: 250px; font-size: larger">
           Login
         </button>
       </div>
       <p style="text-align: center">
         Don't have an account?
-        <button class="signUp" (click)="moveToSignUp()" type="button">
+        <button class="signUp mark" (click)="moveToSignUp()" type="button">
           Sign up
         </button>
       </p>

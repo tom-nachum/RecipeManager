@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 import { ErrorMessageComponent } from 'src/app/shared/error-message/error-message.component';
 import { AuthResopnseData, AuthService } from '../auth.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { RecipeService } from 'src/app/recipes/recipe.service';
+
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 @Component({
   selector: 'app-signup',
@@ -63,4 +64,27 @@ export class SignupComponent {
   onClick(pass){
     this.renderer.removeAttribute(pass, 'readonly');
   }
+
+  onEnter(event){
+    event.preventDefault()
+    let element = event.srcElement.nextElementSibling; // get the sibling element
+    if(element == null){
+      return;
+    }
+    else
+        element.focus();
+    return false
+  }
+
+  displayMessage(email, password){
+    if (password.length < 6) {
+      return 'Enter at least 6 chars for password.'
+    }
+    if (!String(email).toLowerCase().match(EMAIL_REGEX) || password.length < 6) {
+      return 'Please enter a valid email.'
+    }
+    else{
+      return ''
+    }  }
+
 }

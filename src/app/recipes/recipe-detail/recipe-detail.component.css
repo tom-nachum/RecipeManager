@@ -22,4 +22,6 @@ button.mat-focus-indicator.mat-icon-button.mat-button-base:hover {
   max-width: unset !important;
   white-space: pre-wrap;
   font-size: 14px;
+  overflow: hidden;
+  width: 400px;
 }

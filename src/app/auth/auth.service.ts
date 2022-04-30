@@ -37,7 +37,7 @@ export class AuthService {
   private tokenExpirationTimer: any;
   private lastActivity = Date.now()
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router) {
     this.initListener()
   }
 
@@ -51,8 +51,8 @@ export class AuthService {
     document.body.addEventListener('keypress', () => this.updateLastActivity());
   }
 
-  updateLastActivity(){
-    this.lastActivity = Date.now(); 
+  updateLastActivity() {
+    this.lastActivity = Date.now();
   }
 
 
@@ -111,10 +111,10 @@ export class AuthService {
   autoLogout(expirationDuration: number) {
     this.tokenExpirationTimer = setInterval(() => {
       const sinceLastActivity = Date.now() - this.lastActivity
-      if (sinceLastActivity > TIME_OUT*MIN_2_SEC*SEC_2_MILISEC){
+      if (sinceLastActivity > TIME_OUT * MIN_2_SEC * SEC_2_MILISEC) {
         this.logout();
       }
-    }, CHECK_EVERY*MIN_2_SEC*SEC_2_MILISEC);
+    }, CHECK_EVERY * MIN_2_SEC * SEC_2_MILISEC);
   }
 
   autoLogin() {
@@ -151,7 +151,7 @@ export class AuthService {
     return upperCased
   }
 
-  getUserTitle(){
+  getUserTitle() {
     return this.getUserName() + " ,id: " + this.userElem.id
   }
 
@@ -170,20 +170,14 @@ export class AuthService {
       case 'EMAIL_EXISTS':
         error = 'The email address is already in use by another account.';
         break;
-      case 'OPERATION_NOT_ALLOWED':
-        error = 'Password sign-in is disabled for this project.';
-        break;
       case 'TOO_MANY_ATTEMPTS_TRY_LATER':
-        error =
-          'We have blocked all requests from this device due to \
-                        unusual activity. Try again later.';
+        error = 'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
       case 'EMAIL_NOT_FOUND':
-        error =
-          'There is no user record corresponding to this identifier. The user may have been deleted.';
+        error = 'Email or password invalid.';
         break;
       case 'INVALID_PASSWORD':
-        error = 'The password is invalid or the user does not have a password.';
+        error = 'Email or password invalid.';
         break;
       case 'USER_DISABLED':
         error = 'The user account has been disabled by an administrator.';

@@ -9,16 +9,16 @@
       <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <span class="iconify chefLogo" data-icon="mdi-chef-hat" data-inline="false">
         </span>
-        <div class="form-group">
           <label for="email">Email</label>
-          <input appAutoCompleteOff type="email" id="email" class="form-control" ngModel name="email" email required
-            placeholder="For example: israel@israeli.com" (click)="onClick(password)" />
-        </div>
-        <div class="form-group">
+          <input #email appAutoCompleteOff type="email" id="email" class="form-control" ngModel name="email" email required
+            placeholder="For example: israel@israeli.com" (click)="onClick(password)"
+            (keydown.enter)="onEnter($event)" />
           <label for="password">Password</label>
           <input #password appAutoCompleteOff type="password" id="password" class="form-control" ngModel name="password"
-            minlength="6" required placeholder="At least 6 characters" />
-        </div>
+            minlength="6" required placeholder="At least 6 characters"/>
+            <p *ngIf="form.invalid && form.controls['email'].touched && 
+            form.controls['password'].touched" class="alert alert-danger" 
+            style="padding: 6px 12px;"> {{displayMessage(form.value.email, form.value.password)}} </p>
         <button class="btn btn-primary" type="submit" [disabled]="form.invalid"
           style="height: 40px; width: 250px; font-size: larger">
           Sign Up
@@ -29,7 +29,8 @@
     <div class="LoginSwitch" style="  background-color: whitesmoke;  ">
       <p style="text-align: center; margin: 0">
         Have an account?
-        <button type="button" style="background: none; border: none; color: rgb(30, 126, 252)" (click)="toLogIn()">
+        <button type="button" class="mark"
+        style="background: none; border: none; color: rgb(30, 126, 252);" (click)="toLogIn()">
           Log in
         </button>
       </p>

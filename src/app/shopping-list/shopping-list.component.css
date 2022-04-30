@@ -39,3 +39,8 @@ span {
 img{
     width: 30px;
 }
+
+::ng-deep .mat-button-focus-overlay {
+    background-color: transparent!important;
+    opacity: 1 !important;
+}
