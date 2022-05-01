@@ -33,7 +33,7 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   toShoppingList() {
-    this.slService.addIngredients(this.recipe.ingredients);
+    this.slService.addIngredients(this.recipe.ingredients.slice());
     this.dataStorage.storeIngredients()
     this.dataStorage.storeNewIngredients()
     const dialogConfig = new MatDialogConfig()

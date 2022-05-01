@@ -103,7 +103,7 @@ export class RecipeEditComponent implements OnInit, AfterContentChecked, AfterVi
     ingredients.controls.forEach((item) => {
       if (item.value.name != null && item.value.name != ''
         && item.value.amount != null && item.value.amount != '') {
-        newIngredients.push(new Ingredient(item.value.name, item.value.amount));
+        newIngredients.push(new Ingredient(item.value.name, +item.value.amount));
       }
     });
 

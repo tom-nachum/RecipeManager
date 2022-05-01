@@ -58,7 +58,7 @@ export class DataStorageService {
             var ingredients = new Array<Ingredient>()
             var i = 0
             ingredients_data.forEach(element => {
-              ingredients[i] = new Ingredient(element.name, element.amount)
+              ingredients[i] = new Ingredient(element.name, +element.amount)
               i += 1
             })
             return ingredients
@@ -89,7 +89,7 @@ export class DataStorageService {
             else {
               var i = 0
               ingredients_data.forEach(element => {
-                ingredients[i] = new Ingredient(element.name, element.amount)
+                ingredients[i] = new Ingredient(element.name, +element.amount)
                 i += 1
               })
             }
