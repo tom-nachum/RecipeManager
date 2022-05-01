@@ -7,10 +7,19 @@ export class ShoppingListService {
 
   private ingredients: Ingredient[] = [];
 
+  ingredientExists(newIngredient: Ingredient): number {
+    for (let i = 0; i < this.ingredients.length; i++) {
+      if (newIngredient.name === this.ingredients[i].name) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   private pushIngredient(ingredient: Ingredient){
     const idx = this.ingredientExists(ingredient);
       if (idx !== -1) {
-        this.ingredients[idx].amount += +ingredient.amount
+        this.ingredients[idx].amount = +this.ingredients[idx].amount + +ingredient.amount
       } else {
         this.ingredients.push(ingredient);
       }
@@ -41,15 +50,6 @@ export class ShoppingListService {
     this.ingredientViewed(index)
     this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
-  }
-
-  ingredientExists(newIngredient: Ingredient): number {
-    for (let i = 0; i < this.ingredients.length; i++) {
-      if (newIngredient.name === this.ingredients[i].name) {
-        return i;
-      }
-    }
-    return -1;
   }
 
   setIngredients(ingredients: Ingredient[]) {

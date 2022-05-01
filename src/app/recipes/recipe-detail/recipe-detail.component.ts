@@ -6,6 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -33,7 +34,9 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   toShoppingList() {
-    this.slService.addIngredients(this.recipe.ingredients.slice());
+    var ingredients: Ingredient[] = []
+    this.recipe.ingredients.forEach(ingredient => {ingredients.push(new Ingredient(ingredient.name, ingredient.amount))})
+    this.slService.addIngredients(ingredients);
     this.dataStorage.storeIngredients()
     this.dataStorage.storeNewIngredients()
     const dialogConfig = new MatDialogConfig()
