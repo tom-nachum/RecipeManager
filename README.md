@@ -7,6 +7,7 @@ Ever forgot to buy some ingredient for a delicious recipe you wanted to made? We
 
 This website allows you to add your own recipes with all of your favorite ingredients, then by a single click send it to your personal shopping list. There you will find all the ingredients for this recipe, which can help you at the supermatrket.
 
+<img src="Website_pictures/recipes.png">
 ![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/Website_pictures/recipes.png?raw=true)
 
 ## Design
