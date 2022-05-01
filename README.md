@@ -42,7 +42,7 @@ At each point, the user can navigate to his shopping list/recipe list, through t
 
 
 <p align=center>
-    <img src="Website_pictures/mobile_shopping_list.png" width=400px>
+    <img src="Website_pictures/mobile_shopping_list.png" width=300px>
 </p>
 
 ## Backend
