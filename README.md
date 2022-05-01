@@ -7,8 +7,10 @@ Ever forgot to buy some ingredient for a delicious recipe you wanted to made? We
 
 This website allows you to add your own recipes with all of your favorite ingredients, then by a single click send it to your personal shopping list. There you will find all the ingredients for this recipe, which can help you at the supermatrket.
 
-<img src="Website_pictures/recipes.png">
-![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/Website_pictures/recipes.png?raw=true)
+
+<p align=center>
+    <img src="Website_pictures/recipes.png" width=500px>
+</p>
 
 ## Design
 ### Authentication
@@ -38,8 +40,10 @@ If the user delets all the ingredients from the list, an informative message pre
 ### Header 
 At each point, the user can navigate to his shopping list/recipe list, through tabs found in the header. The user can also logout at any time. 
 
-![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/Website_pictures/mobile_shopping_list.png?raw=true)
 
+<p align=center>
+    <img src="Website_pictures/mobile_shopping_list.png" width=200px>
+</p>
 
 ## Backend
 For the backend I've used Firebase:
