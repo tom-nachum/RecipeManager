@@ -9,7 +9,7 @@ This website allows you to add your own recipes with all of your favorite ingred
 
 
 <p align=center>
-    <img src="Website_pictures/recipes.png" width=500px>
+    <img src="Website_pictures/recipes.png" width=700px>
 </p>
 
 ## Design
@@ -42,7 +42,7 @@ At each point, the user can navigate to his shopping list/recipe list, through t
 
 
 <p align=center>
-    <img src="Website_pictures/mobile_shopping_list.png" width=200px>
+    <img src="Website_pictures/mobile_shopping_list.png" width=400px>
 </p>
 
 ## Backend
