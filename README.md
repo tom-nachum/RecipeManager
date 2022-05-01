@@ -11,7 +11,7 @@ This website allows you to add your own recipes with all of your favorite ingred
 <img src="website pictures/recipes.png" width=500px>
 </p>
 
-![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/website_pictures/recipes.png?raw=true)
+![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/Website_pictures/recipes.png?raw=true)
 
 
 ## Design
