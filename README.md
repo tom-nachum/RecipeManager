@@ -11,6 +11,9 @@ This website allows you to add your own recipes with all of your favorite ingred
 <img src="website pictures/recipes.png" width=500px>
 </p>
 
+![alt text](https://github.com/tom-nachum/RecipeManager/blob/master/website_pictures/recipes.png?raw=true)
+
+
 ## Design
 ### Authentication
 Firstly, the user is routed to the login page, and asked to either signin or login. The user cannot enter to any other route at this point.
